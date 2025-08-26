@@ -18,7 +18,7 @@ app.add_middleware(
 )
 
 # تقديم الملفات الثابتة
-app.mount("/assets", StaticFiles(directory="../frontend/academy-frontend/src/assets"), name="assets")
+#app.mount("/assets", StaticFiles(directory="../frontend/academy-frontend/src/assets"), name="assets")
 
 # عنوان API الخارجي
 EXTERNAL_API_BASE = "http://95.216.63.80:255/api"
