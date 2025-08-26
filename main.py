@@ -19,6 +19,11 @@ app.add_middleware(
 
 # تقديم الملفات الثابتة
 #app.mount("/assets", StaticFiles(directory="../frontend/academy-frontend/src/assets"), name="assets")
+# تمكين التقديم الثابت بشكل آمن فقط إذا كان المسار موجودًا (ويمكن ضبطه عبر المتغير البيئي ASSETS_DIR)
+_default_assets_dir = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "frontend", "academy-frontend", "src", "assets"))
+_assets_dir = os.getenv("ASSETS_DIR", _default_assets_dir)
+if os.path.isdir(_assets_dir):
+    app.mount("/assets", StaticFiles(directory=_assets_dir), name="assets")
 
 # عنوان API الخارجي
 EXTERNAL_API_BASE = "http://95.216.63.80:255/api"
